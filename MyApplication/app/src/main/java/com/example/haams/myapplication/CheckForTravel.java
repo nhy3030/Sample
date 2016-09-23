@@ -15,7 +15,7 @@ import android.widget.Button;
 public class CheckForTravel extends AppCompatActivity {
 
     private Intent tIntent,cIntent;
-    private Button btnOk, btnCall;
+    private Button btnOk, btnCall,btnEnd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,15 +32,16 @@ public class CheckForTravel extends AppCompatActivity {
         AlertDialog.Builder dlg = new AlertDialog.Builder(this);
         dlg.setMessage("여행 가고파 ㅠ");
         dlg.setView(layout);
-
         dlg.show();
 
 
         btnOk = (Button) layout.findViewById(R.id.btn_OK);
         btnCall = (Button) layout.findViewById(R.id.btnCall);
+        btnEnd = (Button) layout.findViewById(R.id.btnEnd);
 
         btnOk.setOnClickListener(new dialogListener());
         btnCall.setOnClickListener(new dialogListener());
+        btnEnd.setOnClickListener(new dialogListener());
 
     }
 
@@ -60,13 +61,14 @@ public class CheckForTravel extends AppCompatActivity {
                     cIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:01046182721"));
                     startActivity(cIntent);
                     break;
+
+                case R.id.btnEnd:
+                    finish();
+                    break;
+
             }
 
         }
     }
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
-    }
+
 }

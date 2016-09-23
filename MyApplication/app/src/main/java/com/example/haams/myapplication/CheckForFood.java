@@ -17,7 +17,7 @@ import java.net.URI;
 public class CheckForFood extends AppCompatActivity {
 
     private Intent fIntent,cIntent;
-    private Button btnOk, btnCall;
+    private Button btnOk, btnCall,btnEnd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,19 +30,21 @@ public class CheckForFood extends AppCompatActivity {
 
     private void initFlating() {
 
-        LayoutInflater inflater = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View layout = inflater.inflate(R.layout.activity_for_check_things, null, false);
         AlertDialog.Builder dlg = new AlertDialog.Builder(this);
         dlg.setMessage("야식 각입니다.");
         dlg.setView(layout);
-
         dlg.show();
 
         btnOk = (Button) layout.findViewById(R.id.btn_OK);
         btnCall = (Button) layout.findViewById(R.id.btnCall);
+        btnEnd = (Button) layout.findViewById(R.id.btnEnd);
 
         btnOk.setOnClickListener(new dialogListener());
         btnCall.setOnClickListener(new dialogListener());
+        btnEnd.setOnClickListener(new dialogListener());
+
 
     }
 
@@ -61,14 +63,22 @@ public class CheckForFood extends AppCompatActivity {
                     cIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:01046182721"));
                     startActivity(cIntent);
                     break;
+
+                case R.id.btnEnd:
+                    finish();
+                    break;
             }
 
         }
     }
 
-    @Override
-    public void onBackPressed() {
+   /* @Override
+    public void onBackPressed(){
         super.onBackPressed();
-        finish();
-    }
+        Intent intent = new Intent(this,MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+
+
+    }*/
 }

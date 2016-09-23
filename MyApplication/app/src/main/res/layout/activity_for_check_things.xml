@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -26,6 +27,16 @@
                 android:layout_alignParentTop="true"
                 android:layout_toRightOf="@+id/btn_OK"
                 android:layout_toEndOf="@+id/btn_OK" />
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="닫기"
+                android:id="@+id/btnEnd"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/btnCall"
+                android:layout_toEndOf="@+id/btnCall" />
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

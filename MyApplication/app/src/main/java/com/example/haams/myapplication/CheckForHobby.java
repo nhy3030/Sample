@@ -14,7 +14,7 @@ import android.widget.Button;
 public class CheckForHobby extends AppCompatActivity {
 
     private Intent hIntent,cIntent;
-    private Button btnOk,btnCall;
+    private Button btnOk,btnCall,btnEnd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,15 +30,17 @@ public class CheckForHobby extends AppCompatActivity {
         AlertDialog.Builder dlg = new AlertDialog.Builder(this);
         dlg.setMessage("취미 뭐에요?");
         dlg.setView(layout);
-
         dlg.show();
 
 
         btnOk = (Button) layout.findViewById(R.id.btn_OK);
         btnCall = (Button) layout.findViewById(R.id.btnCall);
+        btnEnd = (Button) layout.findViewById(R.id.btnEnd);
+
 
         btnOk.setOnClickListener(new dialogListener());
         btnCall.setOnClickListener(new dialogListener());
+        btnEnd.setOnClickListener(new dialogListener());
 
     }
 
@@ -57,13 +59,21 @@ public class CheckForHobby extends AppCompatActivity {
                     cIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:01046182721"));
                     startActivity(cIntent);
                     break;
+
+                case R.id.btnEnd:
+                    finish();
+                    break;
+
             }
 
         }
     }
-    @Override
+  /*  @Override
     public void onBackPressed() {
         super.onBackPressed();
-        finish();
-    }
+        Intent intent = new Intent(this,MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+
+    }*/
 }
