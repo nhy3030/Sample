@@ -33,7 +33,6 @@ public class Food_Pictures {
                 .centerCrop()
                 .into((ImageView) mActivity.findViewById(R.id.f_Image2));
 
-
         Glide.with(mActivity)
                 .load("http://image.hankookilbo.com/i.aspx?Guid=85764ac4f2354394ac00d26daed2d4f1&Month=DirectUpload&size=640")
                 .centerCrop()
