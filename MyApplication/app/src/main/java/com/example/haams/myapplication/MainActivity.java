@@ -5,11 +5,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.haams.myapplication.Pictures.Food_Pictures;
 import com.example.haams.myapplication.Pictures.Hobby_Pictures;
 import com.example.haams.myapplication.Pictures.Travel_Pictures;
+
+import butterknife.BindView;
+import butterknife.OnClick;
+
+import static android.R.attr.onClick;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -21,6 +27,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Hobby_Pictures hActivity;
     Travel_Pictures tActivity;
     private String str1, str2, str3;
+    @BindView((R.id.food))
+    Button bnt1;
+    @BindView((R.id.hobby)) Button bnt2;
+    @BindView((R.id.travel)) Button bnt3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +44,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.travel).setOnClickListener(this);
         findViewById(R.id.hobby).setOnClickListener(this);
     }
+    @OnClick(R.id.food)
+    void OnFoodClick()
+    {
+           intent1 = new Intent(this,CheckForFood.class);
+            startActivityForResult(intent1, requestCode1);
+    }
 
+    @OnClick({R.id.food, R.id.travel, R.id.hobby})
+    void OnClikcEverthing() {
+        Toast.makeText(MainActivity.this,"aaaa",Toast.LENGTH_SHORT).show();
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
